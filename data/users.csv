@@ -1,0 +1,49 @@
+
+---
+
+## Data Preparation & Validation
+Before calculating any KPIs, the script performs several cleaning and validation steps to ensure data reliability:
+
+- Standardises all column names to `snake_case`
+- Converts churn status from categorical values (`Yes` / `No`) into a numeric `churn_flag` (1 / 0)
+- Normalises categorical text fields (trimming whitespace and casing)
+- Includes defensive checks to surface unexpected values early
+
+These steps reflect real-world analyst workflows, where validating data quality is as important as the analysis itself.
+
+---
+
+## Analysis Performed
+The script calculates churn metrics grouped by payment behaviour:
+
+- Total users per payment status
+- Number of churned customers
+- Churn rate per group
+
+This allows a direct comparison between customers who pay on time and those who experience payment delays.
+
+---
+
+## Outputs
+Running the script generates two reproducible outputs:
+
+- `outputs/churn_by_payment.csv`  
+  Summary table containing users, churned customers, and churn rate by payment status
+
+- `outputs/churn_by_payment.png`  
+  Bar chart visualising churn rate by payment status
+
+These outputs can be shared directly with stakeholders or reused in further analysis.
+
+---
+
+## Key Insight
+Customers with delayed payment histories churn at a significantly higher rate than customers who pay on time, indicating that payment friction is a major driver of churn in this dataset.
+
+---
+
+## How to Run
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
